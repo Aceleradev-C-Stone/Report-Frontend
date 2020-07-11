@@ -1,0 +1,13 @@
+<div 
+  class="d-inline-block badge badge-pill badge-fixed-width"
+  [ngClass]="{
+    'badge-success': logLevel == LogLevel.Debug,
+    'badge-warning': logLevel == LogLevel.Warning,
+    'badge-danger':  logLevel == LogLevel.Error
+  }">
+  <span
+    class="font-weight-bold"
+    style="font-size: 0.7rem;">
+    {{ logLevelName }}
+  </span>
+</div>

@@ -1,0 +1,48 @@
+<!-- Header bg -->
+<div class="header bg-primary py-6">
+</div>
+<!-- Log details -->
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12 col-lg-6">
+      <div class="card">
+        <div class="col-12 px-5 py-5">
+
+          <!-- Back button -->
+          <div class="row mb-4">
+            <div class="col">
+              <button class="btn btn-sm btn-primary" (click)="onBackPress()">
+                Voltar
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h1 class="display-3 mb-4">{{ introPhrase }}</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <span class="h2 d-block mb-2">Título</span>
+              <span class="d-block mb-4">{{ log.title }}</span>
+              <span class="h2 d-block mb-2">Detalhes</span>
+              <span class="d-block mb-4">{{ log.details }}</span>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+              <div class="d-block mb-4">
+                <app-level-indicator [logLevel]="log.level">
+                </app-level-indicator>
+              </div>
+              <span class="h2 d-inline-block mb-2">Eventos</span>
+              <span class="d-block mb-4">{{ log.eventCount }}</span>
+              <span class="h2 d-inline-block mb-2">Coletado por</span>
+              <span class="d-block">{{ log.userName  }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

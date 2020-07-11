@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fixed table column half width declarations */
+
+.ft-col-0-5 {
+  width: 4.166667%;
+}
+
+.ft-col-1 {
+  width: 8.333333%;
+}
+
+.ft-col-10 {
+  width: 83.333333%;
+}
+
+.badge-fixed-width {
+  width: 80px;
+}
+
+.dropdown-item-active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.dropdown-item-active:hover {
+  background-color: #0073f0;
+  color: white;
+}

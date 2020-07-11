@@ -1,0 +1,86 @@
+<!-- Logs Table -->
+<div class="header bg-primary pb-6"></div>
+<div class="container-fluid">
+  <div class="row mt--6">
+    <div class="col-xl-12 col-lg-6">
+      <div class="card">
+        <!-- Table header -->
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">{{ title }}</h3>
+            </div>
+            <div class="col text-right">
+              <button
+                class="btn btn-sm btn-primary"
+                *ngIf="hasCheckedLog"
+                (click)="onArchivePress()">
+                {{ btnArchiveTitle }}
+              </button>
+              <button
+                class="btn btn-sm btn-primary"
+                *ngIf="hasCheckedLog"
+                (click)="onDeletePress()">
+                Apagar
+              </button>
+              <button
+                *ngIf="btnArchived"
+                class="btn btn-sm btn-primary"
+                routerLink="{{ btnArchived.link }}">
+                {{ btnArchived.title }}
+              </button>
+              <button class="btn btn-sm btn-primary" routerLink="{{ btnGoto.link }}">
+                {{ btnGoto.title }}
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Table content -->
+        <div class="table-responsive">
+          <table class="table align-items-center table-hover">
+            <!-- Table head -->
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="ft-col-0-5">
+                  <input
+                    type="checkbox"
+                    aria-label="Selecionar todos"
+                    (change)="onAllLogsSelectionChange()">
+                </th>
+                <th scope="col" class="ft-col-0-5">Nível</th>
+                <th scope="col" class="ft-col-10">Log</th>
+                <th scope="col" class="ft-col-1">Eventos</th>
+              </tr>
+            </thead>
+            <!-- Table body -->
+            <tbody>
+              <!-- Loop through all logs -->
+              <tr
+                *ngFor="let log of logs | logQuery : queryTerm : queryBy : orderBy : channel"
+                role="button">
+                <td>
+                  <input
+                    type="checkbox"
+                    aria-label="Selecionar"
+                    [checked]="log.isChecked"
+                    [disabled]="!canUserChangeLog(log)"
+                    (change)="onLogSelectionChange($event, log)">
+                </td>
+                <td (click)="onLogClick(log)">
+                  <app-level-indicator [logLevel]="log.level">
+                  </app-level-indicator>
+                </td>
+                <td class="text-center" (click)="onLogClick(log)">
+                  {{ log.description }}<br>
+                  {{ log.source }}<br>
+                  {{ log.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}
+                </td>
+                <td (click)="onLogClick(log)">{{ log.eventCount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

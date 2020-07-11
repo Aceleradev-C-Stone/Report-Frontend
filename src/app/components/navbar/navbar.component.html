@@ -1,0 +1,40 @@
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary">
+  <div class="container-fluid">
+
+    <!-- Greatings text -->
+    <div class="align-items-center">
+      <h1 class="mb-0 text-white">Olá {{ firstName }}</h1>
+    </div>
+
+    <!-- User -->
+    <ul class="navbar-nav align-items-center ml-md-auto">
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link pr-0" role="button" dropdownToggle>
+          <div class="media align-items-center">
+            <span class="avatar avatar-sm rounded-circle">
+              <img [src]="profilePicGeneratorUrl" alt="Usuário">
+            </span>
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm font-weight-bold">{{ user.name }}</span>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" role="menu" *dropdownMenu>
+          <div class="dropdown-header noti-title">
+            <h6 class="text-overflow m-0">Bem vindo!</h6>
+          </div>
+          <button class="dropdown-item" routerLink="/profile">
+            <i class="ni ni-single-02"></i>
+            <span>Perfil</span>
+          </button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item" (click)="logout()">
+            <i class="ni ni-user-run"></i>
+            <span>Sair</span>
+          </button>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</nav>

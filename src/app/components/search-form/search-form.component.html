@@ -1,0 +1,19 @@
+<!-- Search form -->
+<form class="navbar-search navbar-search-light form-inline mr-sm-3">
+  <div class="form-group mb-0" [ngClass]="{ 'focused': focused }">
+    <div class="input-group input-group-alternative input-group-merge">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+      <input
+        class="form-control"
+        placeholder="Pesquisar"
+        type="text"
+        (focus)="focused = true"
+        (blur)="focused = false"
+        (input)="onSearchTermChange($event.target.value)">
+    </div>
+  </div>
+</form>

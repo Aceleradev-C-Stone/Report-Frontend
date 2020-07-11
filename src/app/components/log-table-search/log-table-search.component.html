@@ -1,0 +1,99 @@
+<div class="header bg-primary">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-12 col-7">
+          <!-- Search field -->
+          <nav class="d-none d-md-inline-block collapse navbar-collapse">
+            <app-search-form
+              (onSearchTermChanged)="onQueryTermChange($event)">
+            </app-search-form>
+          </nav>
+          <!-- Query options -->
+          <div class="d-none d-md-inline-block align-items-center ml-md-auto float-right">
+            <!-- Query by -->
+            <div class="btn-group mr-3" dropdown>
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                dropdownToggle>
+                Buscar por
+              </button>
+              <div class="dropdown-menu dropdown-menu-right mt-2" role="menu" *dropdownMenu>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': queryBy === LogQueryOptions.Level }"
+                  (click)="onQueryByChange(LogQueryOptions.Level)">
+                  Nível
+                </button>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': queryBy === LogQueryOptions.Description }"
+                  (click)="onQueryByChange(LogQueryOptions.Description)">
+                  Descrição
+                </button>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': queryBy === LogQueryOptions.Source }"
+                  (click)="onQueryByChange(LogQueryOptions.Source)">
+                  Origem
+                </button>
+              </div>
+            </div>
+            <!-- Order by -->
+            <div class="btn-group mr-3" dropdown>
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                dropdownToggle>
+                Ordenar por
+              </button>
+              <div class="dropdown-menu dropdown-menu-right mt-2" role="menu" *dropdownMenu>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': orderBy === LogQueryOptions.Level }"
+                  (click)="onOrderByChange(LogQueryOptions.Level)">
+                  Nível
+                </button>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': orderBy === LogQueryOptions.Frequency }"
+                  (click)="onOrderByChange(LogQueryOptions.Frequency)">
+                  Frequência
+                </button>
+              </div>
+            </div>
+            <!-- Channel -->
+            <div class="btn-group" dropdown>
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                dropdownToggle>
+                Canal
+              </button>
+              <div class="dropdown-menu dropdown-menu-right mt-2" role="menu" *dropdownMenu>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': channel === LogQueryOptions.Production }"
+                  (click)="onChannelChange(LogQueryOptions.Production)">
+                  Produção
+                </button>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': channel === LogQueryOptions.Development }"
+                  (click)="onChannelChange(LogQueryOptions.Development)">
+                  Desenvolvimento
+                </button>
+                <button
+                  class="dropdown-item"
+                  [ngClass]="{ 'dropdown-item-active': channel === LogQueryOptions.Homologation }"
+                  (click)="onChannelChange(LogQueryOptions.Homologation)">
+                  Homologação
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

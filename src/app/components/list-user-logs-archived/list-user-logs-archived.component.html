@@ -1,0 +1,31 @@
+<!-- List user logs -->
+<div *ngIf="!selectedLog">
+  <!-- Search options -->
+  <app-log-table-search
+    (onQueryTermChanged)="queryTerm = $event"
+    (onQueryByChanged)="queryBy = $event"
+    (onOrderByChanged)="orderBy = $event"
+    (onChannelChanged)="channel = $event">
+  </app-log-table-search>
+  <!-- Logs Table -->
+  <app-log-table
+    [title]="title"
+    [btnArchiveTitle]="'Desarquivar'"
+    [btnArchived]="btnYourLogs"
+    [btnGoto]="btnAllLogs"
+    [logs]="logs"
+    [queryTerm]="queryTerm"
+    [queryBy]="queryBy"
+    [orderBy]="orderBy"
+    [channel]="channel"
+    (onLogClicked)="onLogSelected($event)"
+    (onLogArchived)="onLogsStateChanged()"
+    (onLogDeleted)="onLogsStateChanged()">
+  </app-log-table>
+</div>
+<!-- Selected log details -->
+<app-log-details
+  *ngIf="selectedLog"
+  [log]="selectedLog"
+  (onBackPressed)="onBackPressed()">
+</app-log-details>

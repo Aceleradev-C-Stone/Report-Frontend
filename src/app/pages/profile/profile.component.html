@@ -1,0 +1,104 @@
+<div class="main-content">
+  <!-- Top nav bar -->
+  <app-navbar></app-navbar>
+  <!-- Edit profile infos -->
+  <div class="header bg-primary py-6"></div>
+  <div class="col-xl-8 order-xl-1 mx-auto mt--6">
+    <div class="card">
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col-8">
+            <h3 class="mb-0">Editar perfil</h3>
+          </div>
+          <div class="col-4 text-right">
+            <button
+              class="btn btn-sm btn-primary"
+              [disabled]="!userForm.valid"
+              (click)="onSavePress()">
+              Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <h6 class="heading-small text-muted mb-4">Informações do usuário</h6>
+        <div class="pl-lg-4">
+          <form [formGroup]="userForm">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-email">Email</label>
+                  <input
+                    id="input-email"
+                    class="form-control"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="Email"
+                    value="{{ user.email }}"
+                    disabled>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-name">Nome</label>
+                  <input
+                    id="input-name"
+                    class="form-control"
+                    formControlName="name"
+                    type="text"
+                    autocomplete="name"
+                    placeholder="Nome">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <h6 class="heading-small text-muted mb-4">Alterar senha</h6>
+        <div class="pl-lg-4">
+          <form [formGroup]="passwordForm">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="input-password">Nova Senha</label>
+                  <input
+                    id="input-password"
+                    class="form-control"
+                    formControlName="newPassword"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Senha">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    for="input-retype-password">
+                    Digite novamente
+                  </label>
+                  <input
+                    id="input-retype-password"
+                    class="form-control"
+                    formControlName="retypePassword"
+                    type="password"
+                    autocomplete="new-password"
+                    placeholder="Senha">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Return to Dashboard -->
+    <div class="row">
+      <button class="btn btn-link mx-auto" routerLink="dashboard">
+        Voltar para o Dashboard
+      </button>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="container-fluid">
+    <app-footer></app-footer>
+  </div>
+</div>
