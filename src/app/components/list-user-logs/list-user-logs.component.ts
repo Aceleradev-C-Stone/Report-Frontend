@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Log } from 'src/app/models/log';
-import { LogLevel } from 'src/app/models/enums/LogLevel';
+import { Log } from 'src/app/models/Log';
 import { LogService } from 'src/app/services/log.service';
 import { User } from 'src/app/models/User';
 import { AccountService } from 'src/app/services/account.service';

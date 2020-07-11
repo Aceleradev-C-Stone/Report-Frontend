@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
-import { Log } from 'src/app/models/log';
+import { Log } from 'src/app/models/Log';
 import { User } from 'src/app/models/User';
 import { AccountService } from 'src/app/services/account.service';
 import { Button } from 'src/app/models/Button';

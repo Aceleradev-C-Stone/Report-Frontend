@@ -1,7 +1,7 @@
 import { PipeTransform, Pipe } from '@angular/core';
 import * as _ from 'lodash';
 
-import { Log } from '../models/log';
+import { Log } from '../models/Log';
 import { LogLevel } from '../models/enums/LogLevel';
 import { LogChannel } from '../models/enums/LogChannel';
 

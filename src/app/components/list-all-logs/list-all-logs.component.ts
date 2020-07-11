@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Log } from 'src/app/models/log';
+import { Log } from 'src/app/models/Log';
 import { LogService } from 'src/app/services/log.service';
 import { Button } from 'src/app/models/Button';
 import { title } from 'process';

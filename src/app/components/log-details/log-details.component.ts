@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, LOCALE_ID, Inject } from '@angular/core';
-import { Log } from 'src/app/models/log';
+import { Log } from 'src/app/models/Log';
 import { LogLevel } from 'src/app/models/enums/LogLevel';
 import { formatDate } from '@angular/common';
 

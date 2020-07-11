@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Button } from 'src/app/models/Button';
 import { User } from 'src/app/models/User';
-import { Log } from 'src/app/models/log';
+import { Log } from 'src/app/models/Log';
 import { AccountService } from 'src/app/services/account.service';
 import { LogService } from 'src/app/services/log.service';
 
