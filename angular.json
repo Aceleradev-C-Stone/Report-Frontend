@@ -25,7 +25,7 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/argon.css",
+              "src/assets/css/argon.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -91,7 +91,7 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/argon.css",
+              "src/assets/css/argon.min.css",
               "src/styles.css"
             ],
             "scripts": []
