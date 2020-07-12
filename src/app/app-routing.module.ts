@@ -21,7 +21,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'yours', pathMatch: 'full' }
     ]
   },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    component: ProfileComponent, 
+    canActivate: [AuthGuard]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   // Otherwise redirect to home
