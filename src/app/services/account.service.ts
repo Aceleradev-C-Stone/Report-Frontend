@@ -5,7 +5,8 @@ import { BehaviorSubject, Observable, Subscription, of } from 'rxjs';
 import { map, delay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/User';
-import { UserResponse } from '../models/UserResponse';
+import { LoginUserResponse } from '../models/LoginUserResponse';
+import { Response } from '../models/Response';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -30,17 +31,18 @@ export class AccountService {
   }
 
   login(email, password) {
-    return this.http.post<UserResponse>(`${ environment.apiUrl }/login`, { email, password })
+    return this.http.post<Response>(`${ environment.apiUrl }/auth/login`, { email, password })
       .pipe(map(response => {
-        var user = response.user;
-        user.token = response.token;
+        var loginResponse = response.data as LoginUserResponse;
+        var user = loginResponse.user;
+        user.token = loginResponse.token;
         // Store user details and JWT token in local storage to keep user logged
         // in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
         // Get token expiration and subscribe to counter, so when expired the user
         // is logged out automatically
-        var expiresAt = this.getTokenExpiration(response.expiresIn);
+        var expiresAt = this.getTokenExpiration(loginResponse.expiresIn);
         this.subscribeToExpirationCounter(expiresAt);
         return user;
       }));
@@ -55,20 +57,22 @@ export class AccountService {
   }
 
   register(user: User) {
-    return this.http.post(`${ environment.apiUrl }/register`, user);
+    return this.http.post(`${ environment.apiUrl }/auth/register`, user);
   }
 
   getAll() {
-    return this.http.get<User[]>(`${ environment.apiUrl }/user`);
+    return this.http.get<Response>(`${ environment.apiUrl }/user`)
+      .pipe(map(response => response.data as User[]));
   }
 
   getById(id: number) {
-    return this.http.get<User>(`${ environment.apiUrl }/user/${ id }`);
+    return this.http.get<Response>(`${ environment.apiUrl }/user/${ id }`)
+      .pipe(map(response => response.data as User));
   }
 
   update(id: number, params: any) {
-    return this.http.put<User>(`${ environment.apiUrl }/user/${ id }`, params)
-      .pipe(map(x => {
+    return this.http.put<Response>(`${ environment.apiUrl }/user/${ id }`, params)
+      .pipe(map(response => {
         // Update stored user if the logged in user updated their own record
         if (id == this.userValue.id) {
           // Update local storage
@@ -78,18 +82,18 @@ export class AccountService {
           // Publish updated user to subscribers
           this.userSubject.next(user);
         }
-        return x;
+        return response.data as User;
       }));
   }
 
   delete(id: number) {
-    return this.http.delete<User>(`${ environment.apiUrl }/user/${ id }`)
-      .pipe(map(x => {
+    return this.http.delete<Response>(`${ environment.apiUrl }/user/${ id }`)
+      .pipe(map(response => {
         // Auto logout if the logged user deleted their own record
         if (id == this.userValue.id) {
           this.logout();
         }
-        return x;
+        return response.message;
       }));
   }
 

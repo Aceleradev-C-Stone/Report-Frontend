@@ -1,6 +1,6 @@
 import { User } from './User';
 
-export class UserResponse {
+export class LoginUserResponse {
     user: User;
     token: string;
     expiresIn: number;
